@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winFileSearchLib", "winFileSearchLib\winFileSearchLib.csproj", "{517E66E2-BC78-452D-9E2E-5D52A01398DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winFileSearchTests", "winFileSearchTests\winFileSearchTests.csproj", "{03F9A97D-8F54-4D95-A013-83192B94D18C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{517E66E2-BC78-452D-9E2E-5D52A01398DA} = {517E66E2-BC78-452D-9E2E-5D52A01398DA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
