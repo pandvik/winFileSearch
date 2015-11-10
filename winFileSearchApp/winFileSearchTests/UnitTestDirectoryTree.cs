@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using winFileSearchLib;
 using System.Collections.Generic;
+using System.Text;
 
 namespace winFileSearchTests
 {
@@ -28,11 +29,20 @@ namespace winFileSearchTests
             baseDir = Directory.CreateDirectory(baseDirName);
             Directory.CreateDirectory(baseDirName + "\\" + subDir1Name);
             Directory.CreateDirectory(baseDirName + "\\" + subDir2Name);
+            StreamWriter stream;
+            stream = File.CreateText(baseDirName + "\\" + file1Name);
+            stream.Write("Текст для первого ффайла, который содержит слово словоо");
+            stream.Close();
+            stream = File.CreateText(baseDirName + "\\" + file2Name);
+            stream.Write("Текст для первого ффайла, который не содержит слово");
+            stream.Close();
+            stream = File.CreateText(baseDirName + "\\" + subDir2Name + "\\" + file3Name);
+            stream.Write("Текст для первого ффайла, который не содержит слово");
+            stream.Close();
+            stream = File.CreateText(baseDirName + "\\" + subDir2Name + "\\" + file4Name);
+            stream.Write("Текст для первого ффайла, который содержит слово словоо");
 
-            File.CreateText(baseDirName + "\\" + file1Name).Close();
-            File.CreateText(baseDirName + "\\" + file2Name).Close();
-            File.CreateText(baseDirName + "\\" + subDir2Name + "\\" + file3Name).Close();
-            File.CreateText(baseDirName + "\\" + subDir2Name + "\\" + file4Name).Close();
+            stream.Close();
 
             files = new string[] { file1Name, file2Name, file3Name, file4Name };
         }
@@ -70,6 +80,28 @@ namespace winFileSearchTests
             tree.run();
             Assert.IsTrue(files.Count == 0);
         }
+        [TestMethod]
+        public void DirectoryTree_TestWithFileSearch()
+        {
+            DirectoryTree tree = new DirectoryTree(baseDirName, "file*");
+            List<String> files = new List<string>();
+            tree.OnFoundFile +=
+                file => {
+                    var ff = File.OpenRead(file.FullName);
+                    if (FileSearch.searchInFile(ff, Encoding.UTF8.GetBytes("словоо")))
+                        files.Add(file.Name);
+                };
+            tree.run();
+            Assert.IsFalse(files.TrueForAll(x => x != file1Name));
+            Assert.IsFalse(files.TrueForAll(x => x != file4Name));
+            Assert.IsTrue(files.TrueForAll(x => x != file2Name));
+            Assert.IsTrue(files.TrueForAll(x => x != file3Name));
+        }
 
-    }
+
+
+
+
+
+}
 }
