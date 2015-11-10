@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winFileSearchApp", "winFileSearchApp\winFileSearchApp.csproj", "{DCCFF64B-5FBF-4B80-BB8C-28870570273E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{517E66E2-BC78-452D-9E2E-5D52A01398DA} = {517E66E2-BC78-452D-9E2E-5D52A01398DA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winFileSearchLib", "winFileSearchLib\winFileSearchLib.csproj", "{517E66E2-BC78-452D-9E2E-5D52A01398DA}"
 EndProject

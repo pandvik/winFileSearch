@@ -66,6 +66,11 @@ namespace winFileSearchLib
                 if (OnException != null)
                     OnException(e);
             }
+            catch (System.UnauthorizedAccessException e)
+            {
+                if (OnException != null)
+                    OnException(e);
+            }
         }
 
     }
