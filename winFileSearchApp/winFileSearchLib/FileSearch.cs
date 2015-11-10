@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace winFileSearchLib
 {
-    public class WinFileSearch : IWinFileSearch
+    public class FileSearch
     {
         /// <summary>
         /// Поиск подпоследовательности в потоке данных
@@ -18,7 +18,7 @@ namespace winFileSearchLib
         /// <param name="file">Поток данных</param>
         /// <param name="template">Подпоследовательность</param>
         /// <returns>true - если найдена</returns>
-        public bool searchInFile(Stream file, IList<byte> template)
+        public static bool searchInFile(Stream file, IList<byte> template)
         {
             // incorrect input
             if (file == null
