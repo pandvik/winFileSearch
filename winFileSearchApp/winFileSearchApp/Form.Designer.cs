@@ -1,6 +1,6 @@
 ﻿namespace winFileSearchApp
 {
-    partial class Form1
+    partial class Form
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.treeViewResult = new System.Windows.Forms.TreeView();
             this.folderSelectDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -41,8 +42,10 @@
             this.buttonStartSearch = new System.Windows.Forms.Button();
             this.buttonStopSearch = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.labelTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.LabelFileProcessing = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timerSearch = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -190,6 +193,7 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.labelTime,
             this.toolStripStatusLabel1,
             this.LabelFileProcessing});
             this.statusStrip1.Location = new System.Drawing.Point(0, 489);
@@ -197,6 +201,12 @@
             this.statusStrip1.Size = new System.Drawing.Size(949, 22);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // labelTime
+            // 
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(34, 17);
+            this.labelTime.Text = "00:00";
             // 
             // toolStripStatusLabel1
             // 
@@ -209,7 +219,11 @@
             this.LabelFileProcessing.Name = "LabelFileProcessing";
             this.LabelFileProcessing.Size = new System.Drawing.Size(0, 17);
             // 
-            // Form1
+            // timerSearch
+            // 
+            this.timerSearch.Tick += new System.EventHandler(this.timerSearch_Tick);
+            // 
+            // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -217,7 +231,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(400, 38);
-            this.Name = "Form1";
+            this.Name = "Form";
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -249,6 +263,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel LabelFileProcessing;
+        private System.Windows.Forms.ToolStripStatusLabel labelTime;
+        private System.Windows.Forms.Timer timerSearch;
     }
 }
 
