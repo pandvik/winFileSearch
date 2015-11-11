@@ -9,15 +9,28 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using winFileSearchApp.Properties;
 using winFileSearchLib;
 
 namespace winFileSearchApp
 {
     public partial class Form : System.Windows.Forms.Form
     {
+        /// <summary>
+        /// For load and save session data
+        /// </summary>
+        private SessionData sessionData;
+
         public Form()
         {
             InitializeComponent();
+
+            // Load session data
+            sessionData = new SessionData(Resources.SessionDataFileName);
+            sessionData.Load();
+            textBoxFolderName.Text = sessionData._folderName;
+            textBoxFileTemplate.Text = sessionData._fileTemplate;
+            textBoxFileText.Text = sessionData._fileText;
         }
 
         private void textBoxFolderName_Click(object sender, EventArgs e)
@@ -67,21 +80,6 @@ namespace winFileSearchApp
                 MessageBox.Show("Поиск ещё не запущен");
         }
 
-        private void textBoxFolderName_Enter(object sender, EventArgs e)
-        {
-            textBoxFileTemplate.Select();
-        }
-
-        private void textBoxFileTemplate_Enter(object sender, EventArgs e)
-        {
-            textBoxFileText.Select();
-        }
-
-        private void textBoxFileText_Enter(object sender, EventArgs e)
-        {
-            buttonStartSearch.Select();
-        }
-
         private void timerSearch_Tick(object sender, EventArgs e)
         {
             if (timeStartSearch == null)
@@ -92,6 +90,24 @@ namespace winFileSearchApp
 
             var deltaTime = DateTime.Now - timeStartSearch;
             labelTime.Text = deltaTime.ToString(@"mm\:ss");
+        }
+
+        private void textBoxFolderName_TextChanged(object sender, EventArgs e)
+        {
+            sessionData._folderName = textBoxFolderName.Text;
+            sessionData.Save();
+        }
+
+        private void textBoxFileTemplate_TextChanged(object sender, EventArgs e)
+        {
+            sessionData._fileTemplate = textBoxFileTemplate.Text;
+            sessionData.Save();
+        }
+
+        private void textBoxFileText_TextChanged(object sender, EventArgs e)
+        {
+            sessionData._fileText = textBoxFileText.Text;
+            sessionData.Save();
         }
     }
 }

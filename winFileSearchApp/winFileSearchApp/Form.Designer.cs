@@ -144,6 +144,7 @@
             this.textBoxFolderName.Size = new System.Drawing.Size(452, 20);
             this.textBoxFolderName.TabIndex = 9;
             this.textBoxFolderName.Click += new System.EventHandler(this.textBoxFolderName_Click);
+            this.textBoxFolderName.TextChanged += new System.EventHandler(this.textBoxFolderName_TextChanged);
             // 
             // textBoxFileTemplate
             // 
@@ -152,6 +153,7 @@
             this.textBoxFileTemplate.Name = "textBoxFileTemplate";
             this.textBoxFileTemplate.Size = new System.Drawing.Size(452, 20);
             this.textBoxFileTemplate.TabIndex = 11;
+            this.textBoxFileTemplate.TextChanged += new System.EventHandler(this.textBoxFileTemplate_TextChanged);
             // 
             // textBoxFileText
             // 
@@ -160,6 +162,7 @@
             this.textBoxFileText.Name = "textBoxFileText";
             this.textBoxFileText.Size = new System.Drawing.Size(452, 20);
             this.textBoxFileText.TabIndex = 13;
+            this.textBoxFileText.TextChanged += new System.EventHandler(this.textBoxFileText_TextChanged);
             // 
             // label3
             // 

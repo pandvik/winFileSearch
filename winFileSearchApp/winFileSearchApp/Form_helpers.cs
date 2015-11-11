@@ -65,6 +65,7 @@ namespace winFileSearchApp
             tree.run();
 
             stopTimer();
+            MessageBox.Show("Поиск завершен");
         }
 
         /// <summary>
@@ -110,6 +111,9 @@ namespace winFileSearchApp
             return node;
         }
 
+        /// <summary>
+        /// Остановить таймер
+        /// </summary>
         private void stopTimer()
         {
             timerSearch.Stop();
