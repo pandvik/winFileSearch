@@ -24,6 +24,7 @@ namespace winFileSearchApp
         public Form()
         {
             InitializeComponent();
+            timerTreeUpdate.Start();
 
             // Load session data
             sessionData = new SessionData(Resources.SessionDataFileName);
@@ -77,7 +78,10 @@ namespace winFileSearchApp
                 stopTimer();
             }
             else
+            {
                 MessageBox.Show("Поиск ещё не запущен");
+            }
+            stopTimer();
         }
 
         private void timerSearch_Tick(object sender, EventArgs e)
@@ -90,6 +94,8 @@ namespace winFileSearchApp
 
             var deltaTime = DateTime.Now - timeStartSearch;
             labelTime.Text = deltaTime.ToString(@"mm\:ss");
+
+            LabelFileProcessing.Text = processingFileName;
         }
 
         private void textBoxFolderName_TextChanged(object sender, EventArgs e)
@@ -108,6 +114,17 @@ namespace winFileSearchApp
         {
             sessionData._fileText = textBoxFileText.Text;
             sessionData.Save();
+        }
+
+        private void Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (backgroundSearch != null)
+                backgroundSearch.Abort();
+        }
+
+        private void timerTreeUpdate_Tick(object sender, EventArgs e)
+        {
+            runDelayedTask();
         }
     }
 }

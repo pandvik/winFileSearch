@@ -46,6 +46,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.LabelFileProcessing = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerSearch = new System.Windows.Forms.Timer(this.components);
+            this.timerTreeUpdate = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -226,6 +227,10 @@
             // 
             this.timerSearch.Tick += new System.EventHandler(this.timerSearch_Tick);
             // 
+            // timerTreeUpdate
+            // 
+            this.timerTreeUpdate.Tick += new System.EventHandler(this.timerTreeUpdate_Tick);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +241,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 38);
             this.Name = "Form";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_FormClosing);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -268,6 +274,7 @@
         private System.Windows.Forms.ToolStripStatusLabel LabelFileProcessing;
         private System.Windows.Forms.ToolStripStatusLabel labelTime;
         private System.Windows.Forms.Timer timerSearch;
+        private System.Windows.Forms.Timer timerTreeUpdate;
     }
 }
 
