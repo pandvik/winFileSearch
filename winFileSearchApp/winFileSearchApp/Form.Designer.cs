@@ -142,6 +142,7 @@
             this.textBoxFolderName.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBoxFolderName.Location = new System.Drawing.Point(3, 16);
             this.textBoxFolderName.Name = "textBoxFolderName";
+            this.textBoxFolderName.ReadOnly = true;
             this.textBoxFolderName.Size = new System.Drawing.Size(452, 20);
             this.textBoxFolderName.TabIndex = 9;
             this.textBoxFolderName.Click += new System.EventHandler(this.textBoxFolderName_Click);
