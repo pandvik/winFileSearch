@@ -60,6 +60,8 @@ namespace winFileSearchApp
                 return;
             }
 
+            treeViewResult.Nodes.Clear();
+
             // Init timer
             labelTime.Text = "00:00";
             timeStartSearch = DateTime.Now;

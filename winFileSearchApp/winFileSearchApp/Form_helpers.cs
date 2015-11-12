@@ -60,7 +60,7 @@ namespace winFileSearchApp
                                 addFileToTree(file);
                             }
                             // Hide processing file
-                            processingFileName = "--";
+                            // processingFileName = "--";
                         }
                     }
                     catch (UnauthorizedAccessException e)
@@ -71,6 +71,12 @@ namespace winFileSearchApp
             tree.run();
 
             stopTimer();
+
+            // Change LabelFileProcessing to "Done"
+            BeginInvoke(new Action<string>
+                    ((text) => LabelFileProcessing.Text = text)
+                , "Done");
+
             MessageBox.Show("Поиск завершен");
         }
 
@@ -166,7 +172,7 @@ namespace winFileSearchApp
                 int i =0;
                 lock (delayedTask)
                 {
-                    for ( i = 0; (DateTime.Now - now).Milliseconds < 500 && delayedTask.Count != 0; i++)
+                    for ( i = 0; (DateTime.Now - now).Milliseconds < 700 && delayedTask.Count != 0; i++)
                     {
                         Action tt= delayedTask.Dequeue();
                         tt();
